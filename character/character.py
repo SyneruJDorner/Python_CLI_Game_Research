@@ -1,3 +1,4 @@
+import os
 from inputSystem import Keycode
 
 player = None
@@ -24,12 +25,21 @@ def getPlayerColour():
 
 def updatePosition(inputChar):
     global player
+    world_size = os.get_terminal_size() 
 
     if ord(inputChar) == Keycode.Up: # Move up
         player.posX -= 1
+        if (player.posX < 1):
+            player.posX = 1
     if ord(inputChar) == Keycode.Down: # Move down
         player.posX += 1
+        if (player.posX > world_size.lines):
+            player.posX = world_size.lines
     if ord(inputChar) == Keycode.Left: # Move left
         player.posY -= 1
+        if (player.posY < 1):
+            player.posY = 1
     if ord(inputChar) == Keycode.Right: # Move right
         player.posY += 1
+        if (player.posY > world_size.columns):
+            player.posY = world_size.columns

@@ -23,7 +23,8 @@ def update():
 
 def init():
     cursor.hide()
-    character.createPlayer(0, 0, '@', visuals.TextColours.Blue())
+    character.createPlayer(1, 1, '@', visuals.TextColours.Blue())
+
 
 def main():
     init()
