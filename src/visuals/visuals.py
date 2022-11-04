@@ -1,6 +1,6 @@
 import os
 import sys
-from src import character
+from src.character import Character
 
 class TextColours(object):
     @staticmethod
@@ -92,12 +92,12 @@ def resetColour():
     return "\x1b[1;0m"
 
 def queueCharactersRender():
-    playerBuffer = character.getPlayerColour()
+    playerBuffer = Character.getPlayerColour()
     #\x1b7          => The instruction "7" means save the cursor information.
     playerBuffer += "\x1b7" 
     #\x1b[%d;%df    => The instruction "[x;yf" means go to row 10, column 10. Your code replaces the %ds with numbers inputted by the user.
     #%s             => This is replaced by the text from the user. No escape character here, so the text is printed normally.
-    playerBuffer += "\x1b[%d;%df%s" % (character.getPlayer().posX, character.getPlayer().posY, character.getPlayer().char)
+    playerBuffer += "\x1b[%d;%df%s" % (Character.getPlayer().posX, Character.getPlayer().posY, Character.getPlayer().char)
     #\x1b8          => The instruction "8" means restore the cursor information.
     playerBuffer += "\x1b8"
     playerBuffer += resetColour()

@@ -1,18 +1,20 @@
 import os, time, select, sys, time, queue, subprocess
 import cursor
-from src import inputSystem, visuals, character
+from src.visuals import visuals
+from src.character import Character
+from src.inputSystem import Input, Keycode
 
 
 def handleQuiting(key):
-    if ord(key) == inputSystem.Keycode.Esc: 
+    if ord(key) == Keycode.Esc: 
         sys.exit()
 
 
 def playerControls():
-    if (inputSystem.hasPressedKey()):
-        key = inputSystem.getInputs()
+    if (Input.has_pressed_key()):
+        key = Input.get_inputs()
         handleQuiting(key)
-        character.updatePosition(key)
+        Character.updatePosition(key)
 
 
 def handleAI():
@@ -29,7 +31,7 @@ def update():
 
 def init():
     cursor.hide()
-    character.createPlayer(1, 1, '@', visuals.TextColours.Blue())
+    Character.createPlayer(1, 1, '@', visuals.TextColours.Blue())
 
 
 def main():

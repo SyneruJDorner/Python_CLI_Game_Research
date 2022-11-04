@@ -8,32 +8,30 @@ class Keycode(IntEnum):
     Left = 97
     Right = 100
 
-class KBHit(object):
+class Input(object):
     @staticmethod
-    def getCharHit():
+    def __get_char():
         return msvcrt.getch().decode('utf-8')
 
     @staticmethod
-    def getArrowHit():
+    def get_arrow_hit():
         c = msvcrt.getch()
         vals = [72, 77, 80, 75]
         return vals.index(ord(c.decode('utf-8')))
 
     @staticmethod
-    def hasPressedKey():
+    def has_pressed_key():
         return msvcrt.kbhit()
 
     @staticmethod
-    def clearPressedKey():
+    def clear_pressed_key():
         return msvcrt.kbhit()
 
-def hasPressedKey():
-    return KBHit.hasPressedKey()
+    @staticmethod
+    def get_inputs():
+        input = None
 
-def getInputs():
-    inputChar = None
+        if Input.has_pressed_key():
+            input = Input.__get_char()
 
-    if hasPressedKey():
-        inputChar = KBHit.getCharHit()
-
-    return inputChar
+        return input
