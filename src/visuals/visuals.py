@@ -1,6 +1,6 @@
 import os
 import sys
-import character
+from src import character
 
 class TextColours(object):
     @staticmethod

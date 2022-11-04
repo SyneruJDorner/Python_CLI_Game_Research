@@ -1,5 +1,5 @@
 import os
-from inputSystem import Keycode
+from src.inputSystem import Keycode
 
 player = None
 

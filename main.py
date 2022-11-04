@@ -1,10 +1,12 @@
 import os, time, select, sys, time, queue, subprocess
 import cursor
-import inputSystem, visuals, character
+from src import inputSystem, visuals, character
+
 
 def handleQuiting(key):
     if ord(key) == inputSystem.Keycode.Esc: 
         sys.exit()
+
 
 def playerControls():
     if (inputSystem.hasPressedKey()):
@@ -12,14 +14,18 @@ def playerControls():
         handleQuiting(key)
         character.updatePosition(key)
 
+
 def handleAI():
     pass
+
 
 def update():
     while(True):
         playerControls()
         handleAI()
         visuals.render()
+        #Handle Debugging here!
+
 
 def init():
     cursor.hide()
@@ -29,6 +35,7 @@ def init():
 def main():
     init()
     update()
+
 
 if __name__ == "__main__":
     main()
